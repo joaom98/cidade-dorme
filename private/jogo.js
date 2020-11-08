@@ -19,10 +19,6 @@ class Jogo {
         this.turno;
         this.duracaoRodada = 180000; // milisegundos
 
-        this.detetive;
-        this.anjo;
-        this.assasinos;
-
     }
 
     iniciaJogo() {
@@ -70,28 +66,72 @@ class Jogo {
         this.jogadores.push(jogador);
     }
 
-    fazAcoes(){
-        this.votacaoAssasinos();
-        this.votacaoAnjo();
-        this.votacaoDetetive();
+    executaAcoes(){
+
+        this.jogadores.forEach(jogador => {
+            jogador.personagem.acao();
+        });
+
+        if ( this.maisVotadoParaMorrer().salvo === false){
+            this.maisVotadoParaMorrer().morre();
+        }
 
     }
 
-    removeSalvo(){
+    votacao(){
 
+        this.jogadores.forEach(jogador => {
+            jogador.personagem.zeraVotos();
+        });
+
+        this.jogadores.forEach(jogador => {
+             if ( jogador.personagem.voto.constructor.name === 'Jogador') {
+                jogador.personagem.voto.personagem.recebeVotos();
+            }
+        });
+
+        this.maisVotado().morre();
+
+    }
+
+    maisVotado(){
+        
+        let maisVotado = this.jogadores[0].personagem;
+
+        for (let i = 0 , votos = 0 ; i < this.qtdJogadores ; i++ ){
+            if ( this.jogadores[i].personagem.votos >= votos ) {
+                votos = this.jogadores[i].personagem.votos;
+                maisVotado = this.jogadores[i].personagem;
+            }
+        }
+
+        return maisVotado;
+    }
+
+    maisVotadoParaMorrer(){
+        let maisVotado = this.jogadores[0].personagem;
+
+        for (let i = 0 , marcacoes = 0 ; i < this.qtdJogadores ; i++ ){
+            if ( this.jogadores[i].personagem.marcacoes >= marcacoes ) {
+                marcacoes = this.jogadores[i].personagem.marcacoes;
+                maisVotado = this.jogadores[i].personagem;
+            }
+        }
+
+        return maisVotado;
+    }
+
+    removeSalvos(){
+        this.jogadores.forEach( (jogador) => {
+            jogador.salvo = false;
+        })
     }
 
     passaTurno(){
-        removeSalvo();
-        this.votacaoCidade();
-    }
+        this.removeSalvos();
+        this.votacao();
 
-    escolheJogador(jogador){
-
-    }
-
-    mataJogador(jogador){
-        jogador.vivo = false;
+        this.executaAcoes();
     }
 
     embaralhaJogadores() {

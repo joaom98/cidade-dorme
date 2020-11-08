@@ -6,9 +6,6 @@ class Jogador {
     constructor(nome) {
         this.nome = nome;
         this.personagem;
-
-        this.vivo = true;
-        this.voto = 'pular';
     }
 
     pegaPapel(){
@@ -25,6 +22,10 @@ class Jogador {
 
     salva(){
         this.salvo = true;
+    }
+
+    acao() {
+        this.personagem.acao();
     }
 
 }

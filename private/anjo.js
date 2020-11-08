@@ -3,8 +3,19 @@ const { Personagem } = require('./personagem');
 
 class Anjo extends Personagem {
 
-    votacaoAnjo(jogador) {
-        jogador.salva(); 
+    constructor(){
+        super();
+        this.votoParaSalvar;
+    }
+
+    votarParaSalvar(personagem){
+        this.votoParaSalvar = personagem;
+    }
+
+
+    acao() {
+        // seleciona e salva um jogador 
+        this.votoParaSalvar.ficaSalvo();
     }
 
 }
