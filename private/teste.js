@@ -15,8 +15,8 @@ const jogador5 = new Jogador("5");
 const jogador6 = new Jogador("6");
 const jogador7 = new Jogador("7");
 const jogador8 = new Jogador("8");
-const detetive = new Detetive("detetive");
-const assassino = new Assassino("Assassino");
+const jogador9 = new Jogador("9");
+const jogador10 = new Jogador("10");
 
 jogo.adicionaJogadores(jogador1);
 jogo.adicionaJogadores(jogador2);
@@ -26,12 +26,11 @@ jogo.adicionaJogadores(jogador5);
 jogo.adicionaJogadores(jogador6);
 jogo.adicionaJogadores(jogador7);
 jogo.adicionaJogadores(jogador8);
-jogo.adicionaJogadores(detetive);
+jogo.adicionaJogadores(jogador9);
+jogo.adicionaJogadores(jogador10);
 
 
 jogo.iniciaJogo();
 
 
 console.log(jogo.jogadores);
-
-console.log(detetive.investiga(assassino));

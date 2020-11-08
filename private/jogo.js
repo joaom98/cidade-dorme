@@ -1,10 +1,21 @@
-const {papeis} = require('./enum');
+const { Assassino } = require('./assassino');
+const { Inocente } = require('./inocente');
+const { Anjo } = require('./anjo');
+const { Detetive } = require('./detetive');
+
 
 class Jogo {
     constructor() {
         this.jogadores = [];
         this.qtdJogadores = 0;
+
+
         this.qtdAssassinos = 1;
+        this.qtdDetetives = 1;
+        this.qtdAnjos = 1;
+        this.qtdInocentes; 
+
+        
         this.turno;
         this.duracaoRodada = 180000; // milisegundos
 
@@ -16,31 +27,42 @@ class Jogo {
 
     iniciaJogo() {
 
-        this.embaralhaJogadores();
-
         this.qtdJogadores = this.jogadores.length;
-
-        if (this.qtdJogadores < 5 ) {
-            return 3;
-        }
-
         this.qtdAssassinos = Math.floor(Math.sqrt(this.qtdJogadores));
+        
+        this.qtdInocentes = this.qtdJogadores - (this.qtdAnjos + this.qtdAssassinos + this.qtdDetetives);
 
-        let assasinosDisponiveis = this.qtdAssassinos;
+        let assassinosDisponiveis = this.qtdAssassinos;
+        let inocentesDisponiveis = this.qtdInocentes;
+        let detetivesDisponiveis = this.qtdDetetives;
+        let anjosDisponiveis = this.qtdAnjos;
 
         this.jogadores.forEach(jogador => {            
 
-            if ( assasinosDisponiveis > 0 ){
-                jogador.papel = papeis.ASSASSINO;
-                assasinosDisponiveis--;
+            if ( assassinosDisponiveis > 0 ){
+                jogador.personagem = new Assassino();
+                assassinosDisponiveis--;
             }
+
+            else if ( anjosDisponiveis > 0 ){
+                jogador.personagem = new Anjo();
+                anjosDisponiveis--;
+            }
+
+            else if ( detetivesDisponiveis > 0 ){
+                jogador.personagem = new Detetive();
+                detetivesDisponiveis--;
+            }
+
+            else if ( inocentesDisponiveis > 0 ){
+                jogador.personagem = new Inocente();
+                inocentesDisponiveis--;
+            }
+
         });
 
-        this.jogadores[this.qtdAssassinos].papel = papeis.DETETIVE;
-        this.jogadores[this.qtdAssassinos+1].papel = papeis.ANJO;
 
-        this.embaralhaJogadores();
-        this.embaralhaJogadores();
+        //this.embaralhaJogadores();
 
     }
 
