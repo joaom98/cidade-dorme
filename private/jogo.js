@@ -10,7 +10,7 @@ class Jogo {
 
         this.detetive;
         this.anjo;
-        this.assasinos
+        this.assasinos;
 
     }
 

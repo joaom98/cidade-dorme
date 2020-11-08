@@ -1,6 +1,7 @@
 const {Jogador} = require('./jogador');
+const { Personagem } = require('./personagem');
 
-class Detetive extends Jogador {
+class Detetive extends Personagem {
 
     investiga(jogador) {
         return ( jogador.pegaPapel() === 'Assassino' ) ;

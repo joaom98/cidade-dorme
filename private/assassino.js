@@ -1,6 +1,7 @@
 const {Jogador} = require('./jogador');
+const { Personagem } = require('./personagem');
 
-class Assassino extends Jogador{
+class Assassino extends Personagem{
     
     
     votacaoAssasinos(jogador) {

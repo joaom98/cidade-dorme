@@ -1,14 +1,9 @@
-const {papeis} = require('./enum');
+class Personagem {
 
-class Jogador {
-
-
-    constructor(nome) {
-        this.nome = nome;
-        this.personagem;
-
+    constructor() {
         this.vivo = true;
         this.voto = 'pular';
+        this.salvo = false;
     }
 
     pegaPapel(){
@@ -23,10 +18,10 @@ class Jogador {
         this.vivo = false;
     }
 
-    salva(){
+    ficaSalvo(){
         this.salvo = true;
     }
 
 }
 
-module.exports = {Jogador};
+module.exports = {Personagem};
