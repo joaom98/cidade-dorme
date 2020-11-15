@@ -52,7 +52,7 @@ class Jogo {
         });
 
 
-        //this.embaralhaJogadores();
+        this.embaralhaJogadores();
 
     }
 
