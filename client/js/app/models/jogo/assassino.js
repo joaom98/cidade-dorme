@@ -1,11 +1,9 @@
-const { Jogador } = require('./jogador');
-const { Personagem } = require('./personagem');
-
 class Assassino extends Personagem {
 
     constructor(){
         super();
         this.votoParaMatar;
+        this.alinhamento = 'mau'
     }
 
     votarParaMatar(personagem){
@@ -16,5 +14,3 @@ class Assassino extends Personagem {
         this.votoParaMatar.marcadoParaMorrer();
     }
 }
-
-module.exports = { Assassino };

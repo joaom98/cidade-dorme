@@ -1,9 +1,3 @@
-const { Assassino } = require('./assassino');
-const { Inocente } = require('./inocente');
-const { Anjo } = require('./anjo');
-const { Detetive } = require('./detetive');
-
-
 class Jogo {
     constructor() {
         this.jogadores = [];
@@ -62,8 +56,8 @@ class Jogo {
 
     }
 
-    adicionaJogadores(jogador) {
-        this.jogadores.push(jogador);
+    adicionaJogador(nome) {
+        this.jogadores.push(new Jogador(nome));
     }
 
     executaAcoes(){
@@ -142,5 +136,3 @@ class Jogo {
     }
 
 }
-
-module.exports = {Jogo};

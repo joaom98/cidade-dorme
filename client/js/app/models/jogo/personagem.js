@@ -6,8 +6,9 @@ class Personagem {
         this.salvo = false; // Se está salvo pelo anjo
         this.votos = 0; // Quantos votos recebeu
         this.marcacoes = 0; // Quantos votos de assassino elx recebeu
-        this.vivo = true;
+
         this.foiInvestigado = false;
+        this.alinhamento = 'bom';
     }
 
     votar(personagem) {
@@ -22,10 +23,6 @@ class Personagem {
         this.votos = 0;
     }
 
-    pegaPapel(){
-        return this.constructor.name;
-    }
-
     morre(){
         this.vivo = false;
     }
@@ -34,8 +31,9 @@ class Personagem {
         this.salvo = true;
     }
 
-    acao(jogador) {
+    acao(personagem) {
         // esse metodo precisa ser sobrescrito
+        throw Error("Não é pra instanciar um personagem direto!");
     }
 
     marcadoParaMorrer(){
@@ -47,5 +45,3 @@ class Personagem {
     }
 
 }
-
-module.exports = {Personagem};

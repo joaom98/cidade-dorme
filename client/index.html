@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Cidade Dorme</title>
+</head>
+<body class="container">
+    
+    <h1>Cidade Dorme Web</h1>
+    
+    <div id="JogadorView"></div>
+    
+    <div id="PersonagemView"></div>
+
+    <form class="form" onsubmit="jogoController.criaJogador(event)" >
+    
+        <label for="nome">Name</label>
+        <input type="text" id="nome">
+
+        <button type="submit">Jogar</button>
+
+    </form>
+
+    <form class="form" onsubmit="jogoController.iniciaJogo(event)" >
+        <button type="submit">Inicia</button>
+    </form>
+
+
+    <script src="./js/app/models/jogo/jogador.js"></script>
+    <script src="./js/app/models/jogo/personagem.js"></script>
+    <script src="./js/app/models/jogo/inocente.js"></script>
+    <script src="./js/app/models/jogo/detetive.js"></script>
+    <script src="./js/app/models/jogo/assassino.js"></script>
+    <script src="./js/app/models/jogo/anjo.js"></script>
+    <script src="./js/app/models/jogo/jogo.js"></script>
+    <script src="./js/app/controller/JogoController.js"></script>
+    
+    <script>
+        let jogoController = new JogoController();
+    </script>
+</body>
+</html>

@@ -1,6 +1,3 @@
-const {Jogador} = require('./jogador');
-const { Personagem } = require('./personagem');
-
 class Anjo extends Personagem {
 
     constructor(){
@@ -19,5 +16,3 @@ class Anjo extends Personagem {
     }
 
 }
-
-module.exports = {Anjo};
